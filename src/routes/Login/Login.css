@@ -1,0 +1,146 @@
+.containerFormLogin{
+    width: 40%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    color: white;
+    border-right: 1px solid rgba(255, 255, 255, 0.267);
+}
+
+.containerFormLogin h1{
+    text-align: center;
+    font-size:  5em;
+    text-transform: uppercase;
+    font-weight: 400;
+    margin-top: 50px;
+    margin-bottom: -100px;
+}
+
+.containerFormLogin .logo{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: .5em;
+}
+
+.logo p{
+    font-size: 1.2em;
+    font-weight: 800;
+}
+
+.containerFormLogin form{
+    width: 80%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1em;
+    text-align: center;
+    
+}
+
+form input{
+    background: #44444473;
+    height: 60px;
+    border-radius: 10px;
+    border: 1px solid #6643FF;
+    padding: 0px 10px;
+    font-size: 1.3em;
+    color: white;
+    transition: .2s;
+    outline: none;
+}
+
+form input:focus{
+    outline: none;
+    box-shadow: 0px 0px 0px 4px #6643ffa6;
+    transition: .2s;
+}
+
+form .btn-login{
+    background: #5A189A;
+    height: 50px;
+    font-size: 1em;
+    font-weight: 500;
+    border-radius: 15px;
+    color: white;
+    border: none;
+    font-size: 1em;
+    cursor: pointer;
+    transition: .2s;
+}
+
+form .btn-altLogin{
+    width: 100%;
+    height: 45px;
+    background: none;
+    border: 1px solid #6643FF;
+    border-radius: 10px;
+    color: white;
+    font-size: 1em;
+    cursor: pointer;
+    transition: .2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .5em;
+}
+
+.btn-altLogin img{
+    width: 30px;
+    height: 30px;
+}
+
+form p{
+    font-size: 1em;
+}
+
+form .btn-login:hover{
+    background: #3C096C;
+    transition: .2s;
+}
+
+.btn-altLogin:hover{
+    background: #6643ff41;
+}
+
+.lado-esq-login{
+    width: 60%;
+    height: 100%;
+    position: relative;
+}
+
+.lado-esq-login .circle{
+    position: absolute;
+    left: 45%;
+    bottom: -30%;
+    width: 400px;
+    height: 400px;
+    background: #A865E1;
+    border-radius: 50%;
+    filter: blur(100px);
+}
+
+.lado-esq-login .circle2{
+    position: absolute;
+    left: 70%;
+    bottom: -20%;
+    width: 500px;
+    height: 500px;
+    background: #7C34C0;
+    border-radius: 50%;
+    filter: blur(100px);
+}
+
+@media (max-width: 1100px) {
+    .lado-esq-login{
+        display: none;
+    }
+
+    .containerFormLogin{
+        width: 100%;
+        border: none;
+    }
+}

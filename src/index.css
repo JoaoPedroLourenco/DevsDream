@@ -1,0 +1,33 @@
+:root{
+  --brancoTransparente: rgba(255, 255, 255, 0.146);
+  --brancoTransparenteTexto: rgba(255, 255, 255, 0.484);
+  --roxo: #6643FF;
+  --bgColor:  #2d2d2d;
+}
+
+*{
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body{
+  background: var(--bgColor);
+  color: white;
+}
+
+.container{
+  width: 60%;
+  border-left: 1px solid var(--brancoTransparente);
+  border-right: 1px solid var(--brancoTransparente);
+  position: relative;
+  left: 10%;
+}
+
+.title{
+  text-align: center;
+  font-size: 1.2em;
+  padding: 10px 0px;
+  border-bottom: 1px solid var(--brancoTransparente);
+}
