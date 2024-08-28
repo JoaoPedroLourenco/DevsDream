@@ -25,13 +25,13 @@ const SideBar = () => {
         </li>
         <li>
           <NavLink to="/criarPost">
-            <img src={create} alt="home" />
+            <img src={create} alt="criar Post" />
             <p>Criar Post</p>
           </NavLink>
         </li>
         <li>
           <NavLink to="/ajuda">
-            <img src={ajuda} alt="home" />
+            <img src={ajuda} alt="ajuda" />
             <p>Ajuda</p>
           </NavLink>
         </li>
@@ -41,7 +41,7 @@ const SideBar = () => {
         <ul>
           <li>
             <NavLink to="/perfil">
-              <img src={user} alt="home" />
+              <img src={user} alt="perfil" />
               <p>Perfil</p>
             </NavLink>
           </li>
