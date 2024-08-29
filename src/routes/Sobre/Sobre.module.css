@@ -1,0 +1,45 @@
+.sobreContainer{
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2em;
+}
+
+.sobreContainer h1{
+    text-align: center;
+    font-size: 3em;
+}
+
+.sobreContainer span{
+    color: #6643FF;
+    font-style: italic;
+}
+
+.sobreContainer p{
+    margin: 0 auto;
+    text-align: center;
+    font-size: 1.2em;
+    max-width: 800px;
+}
+
+.sobreContainer h2{
+    color: #6643FF;
+    font-weight: normal;
+    font-style: italic;
+}
+
+.sobreContainer a{
+    color: white;
+    border-radius: 10px;
+    font-size: 1.2em;
+    padding: 10px;
+    background: #6643FF;
+    text-decoration: none;
+    transition: .2s;
+}
+
+.sobreContainer a:hover{
+    background: #3C096C;
+    transition: .2s;
+}

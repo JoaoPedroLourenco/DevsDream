@@ -22,7 +22,7 @@ body{
   border-left: 1px solid var(--brancoTransparente);
   border-right: 1px solid var(--brancoTransparente);
   position: relative;
-  left: 10%;
+  left: 5%;
 }
 
 .title{

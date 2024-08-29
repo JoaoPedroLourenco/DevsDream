@@ -3,41 +3,85 @@
     --brancoTransparenteTexto: rgba(255, 255, 255, 0.484);
     --roxo: #6643FF;
 }
-
+ 
 nav{
-    width: 200px;
+    width: 20%;
     height: 100vh;
     border-right: 1px solid var(--brancoTransparente);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     margin-right: 20px;
-    
+    transition: .5s;
 }
-
+ 
 nav ul{
     width: 100%;
     display: flex;
     flex-direction: column;
     list-style: none;
 }
-
+ 
 nav ul .logo{
-    padding: 10px;
-    padding-left: 10px;
+    padding: 5px;
     display: flex;
     align-items: center;
+    justify-content: space-between;
     gap: .5em;
     font-style: italic;
     font-weight: 800;
     border-bottom: 1px solid var(--brancoTransparente);
+    margin-bottom: 5px;
+}
+ 
+ 
+.logoContent{
+    display: flex;
+    align-items: center;
+    gap: .5em;
+}
+ 
+.seta{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+    text-align: center;
+ 
+    transition: .2s;
+}
+ 
+.seta button{
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    padding: 5px 5px;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.2em;
+    font-weight: bolder;
 }
 
+.seta button img{
+    width: 25px;
+    height: 25px;
+}
+ 
+.seta button:hover{
+    background: rgba(128, 128, 128, 0.247);
+    transition: .2s;
+    cursor: pointer;
+}
+ 
 .logo img{
     width: 40px;
     height: 40px;
 }
-
+ 
 nav ul li a{
     width: 100%;
     padding: 10px;
@@ -50,25 +94,25 @@ nav ul li a{
     text-decoration: none;
     transition: .2s;
 }
-
+ 
 a:hover{
     background: var(--brancoTransparente);
 }
-
+ 
 nav ul li img{
     width: 30px;
     height: 30px;
     opacity: .5;
 }
-
+ 
 nav ul li p{
     color: var(--brancoTransparenteTexto);
 }
-
+ 
 .perfil a{
     padding-left: 10px;
 }
-
+ 
 .active{
     background: var(--brancoTransparente);
     transition: .2s;

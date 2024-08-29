@@ -4,7 +4,7 @@ import App from "./App.jsx";
 import "./index.css";
 
 import Home from "./routes/Home/Home.jsx";
-import Ajuda from "./routes/Ajuda/Ajuda.jsx";
+import Sobre from "./routes/Sobre/Sobre.jsx";
 import CreatePost from "./routes/CreatePost/CreatePost.jsx";
 import Login from "./routes/Login/Login.jsx";
 
@@ -29,8 +29,8 @@ const router = createBrowserRouter([
         element: <Perfil />,
       },
       {
-        path: "/ajuda",
-        element: <Ajuda />,
+        path: "/sobre",
+        element: <Sobre />,
       },
       {
         path: "/criarPost",
