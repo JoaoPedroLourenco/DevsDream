@@ -68,6 +68,10 @@ form .btnsLogin{
     gap: 1em;
 }
 
-.btnsLogin .btnCancelar{
+.btnCancelar{
     background: rgb(82, 49, 106);
+}
+
+.btnCancelar:hover{
+    background: rgb(66, 0, 66);
 }

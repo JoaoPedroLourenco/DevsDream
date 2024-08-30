@@ -48,7 +48,6 @@ form input, textarea{
 form textarea{
     height: 150px;
     resize: none;
-    background: rgba(255, 255, 255, 0.035);
 }
  
 form button{
