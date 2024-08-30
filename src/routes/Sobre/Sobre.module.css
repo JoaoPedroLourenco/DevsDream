@@ -37,6 +37,30 @@
     background: #6643FF;
     text-decoration: none;
     transition: .2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.creditos{
+    width: 50%;
+    height: 20%;
+    display: flex;
+    flex-direction: column;
+    gap: .5em;
+}
+
+.creditos .btnCreditos{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1em;
+}
+
+.btnCreditos a img{
+    width: 30px;
+    height: 30px;
 }
 
 .sobreContainer a:hover{

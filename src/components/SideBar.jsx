@@ -14,8 +14,20 @@ import seta from "../assets/imgs/Left Arrow.png";
 
 import { NavLink } from "react-router-dom";
 
+import Login from "../routes/Login/Login";
+
 const SideBar = () => {
   const [hideSideBar, setHideSideBar] = useState(false);
+
+  const [loginPopUp, setLoginPopUp] = useState(false);
+
+  const openLoginPopUp = () => {
+    setLoginPopUp(!loginPopUp);
+  };
+
+  const evitarFechamento = (e) => {
+    e.stopPropagation();
+  };
 
   const handleClick = () => {
     setHideSideBar(!hideSideBar);
@@ -66,10 +78,10 @@ const SideBar = () => {
       <div className="perfil">
         <ul>
           <li>
-            <NavLink to="/perfil">
-              <img src={user} alt="perfil" />
-              <p style={{ display: hideSideBar ? "none" : "block" }}>Perfil</p>
-            </NavLink>
+            <button onClick={openLoginPopUp}>
+              Fazer Login
+              {loginPopUp && <Login />}
+            </button>
           </li>
         </ul>
       </div>
