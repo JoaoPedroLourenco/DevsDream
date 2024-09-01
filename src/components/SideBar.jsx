@@ -1,3 +1,4 @@
+// imports do react
 import React, { useState } from "react";
 
 // estilos
@@ -12,8 +13,10 @@ import ajuda from "../assets/imgs/ajuda.png";
 import Logo from "../assets/imgs/DDLogo.png";
 import seta from "../assets/imgs/Left Arrow.png";
 
+// react-router-dom
 import { NavLink } from "react-router-dom";
 
+// components / routes
 import Login from "../routes/Login/Login";
 
 const SideBar = () => {
@@ -21,15 +24,12 @@ const SideBar = () => {
 
   const [loginPopUp, setLoginPopUp] = useState(false);
 
+  // função usada para abrir o pop up do login
   const openLoginPopUp = () => {
     setLoginPopUp(!loginPopUp);
   };
 
-  const evitarFechamento = (e) => {
-    e.stopPropagation();
-  };
-
-  const handleClick = () => {
+  const diminuirSideBar = () => {
     setHideSideBar(!hideSideBar);
   };
 
@@ -43,9 +43,9 @@ const SideBar = () => {
           </div>
           <div className="seta">
             <button
-              onClick={handleClick}
+              onClick={diminuirSideBar}
               style={{
-                rotate: hideSideBar ? "180deg" : "0deg",
+                rotate: hideSideBar ? "180deg" : "0deg", // girar seta ao clicar
                 transition: ".5s",
               }}
             >

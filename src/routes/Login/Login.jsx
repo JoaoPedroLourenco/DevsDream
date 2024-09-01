@@ -9,28 +9,31 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
 
-  const [closePopUp, setClosePopUp] = useState(false);
+  const [fecharPopUp, setFecharPopUp] = useState(false);
 
-  // função executada no submit do form
+  // função executada no submit do form para evitar a atualização da página
   const handleSubmit = (e) => {
     e.preventDefault();
   };
 
+  // evitar fechamento do Pop Up ao clicar no form ou os itens dentro do form
+  // é possível fechar o pop up clicando fora do form
   const evitarFechamento = (e) => {
     e.stopPropagation();
   };
 
-  const fecharPopUp = () => {
-    setClosePopUp(!closePopUp);
+  // usado para o botão "cancelar" do form, para fechar o pop up
+  // é possível fechar o pop up clicando fora do form
+  const fecharPopUpLogin = () => {
+    setFecharPopUp(!fecharPopUp);
   };
 
   return (
     <div
       className={styles.loginContainer}
-      onClick={evitarFechamento}
       style={{ display: closePopUp ? "none" : "flex" }}
     >
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} onClick={evitarFechamento}>
         <div className={styles.logo}>
           <img src={Logo} alt="DevsDream" />
           <p>DevsDream</p>
@@ -51,7 +54,7 @@ const Login = () => {
         />
 
         <div className={styles.btnsLogin}>
-          <button onClick={fecharPopUp} className={styles.btnCancelar}>
+          <button onClick={fecharPopUpLogin} className={styles.btnCancelar}>
             Cancelar
           </button>
           <button>Entrar</button>
