@@ -1,7 +1,7 @@
-import React from "react";
-
 import styles from "./Home.module.css";
 import user from "../../assets/imgs/user.png";
+
+import imagemPost from '../../assets/imgs/pexels-photo-577585.webp'
 
 const Home = () => {
   return (
@@ -36,6 +36,8 @@ const Home = () => {
                 impedit sequi. Cupiditate ex corrupti illo rerum veniam suscipit
                 alias expedita eveniet omnis libero!
               </p>
+
+              <img src={imagemPost} alt="" />
             </div>
 
             <div className={styles.postTags}>

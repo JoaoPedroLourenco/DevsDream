@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 import styles from "../CreatePost/CreatePost.module.css";
 
@@ -40,6 +40,11 @@ const CreatePost = () => {
               value={postContent}
               onChange={(e) => setPostContent(e.target.value)}
             ></textarea>
+          </label>
+
+          <label>
+            Compartilhe uma imagem
+            <input type="file" name="" id="" />
           </label>
 
           <label>

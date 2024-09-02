@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import  { useState } from "react";
 import Logo from "../../assets/imgs/Logo.png";
 import gitHub from "../../assets/imgs/GitHub.png";
 import google from "../../assets/imgs/Google.png";
@@ -31,7 +31,7 @@ const Login = () => {
   return (
     <div
       className={styles.loginContainer}
-      style={{ display: closePopUp ? "none" : "flex" }}
+      style={{ display: fecharPopUpLogin ? "none" : "flex" }}
     >
       <form onSubmit={handleSubmit} onClick={evitarFechamento}>
         <div className={styles.logo}>

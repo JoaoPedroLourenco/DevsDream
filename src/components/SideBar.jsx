@@ -1,5 +1,5 @@
 // imports do react
-import React, { useState } from "react";
+import { useState } from "react";
 
 // estilos
 import "./SideBar.css";
@@ -7,8 +7,8 @@ import "./SideBar.css";
 // imagens
 import home from "../assets/imgs/home.png";
 import create from "../assets/imgs/Add.png";
-import sair from "../assets/imgs/sair.png";
-import user from "../assets/imgs/user.png";
+// import sair from "../assets/imgs/sair.png";
+// import user from "../assets/imgs/user.png";
 import ajuda from "../assets/imgs/ajuda.png";
 import Logo from "../assets/imgs/DDLogo.png";
 import seta from "../assets/imgs/Left Arrow.png";
@@ -24,7 +24,6 @@ const SideBar = () => {
 
   const [loginPopUp, setLoginPopUp] = useState(false);
 
-  // função usada para abrir o pop up do login
   const openLoginPopUp = () => {
     setLoginPopUp(!loginPopUp);
   };
@@ -78,7 +77,7 @@ const SideBar = () => {
       <div className="perfil">
         <ul>
           <li>
-            <button onClick={openLoginPopUp}>
+          <button onClick={openLoginPopUp}>
               Fazer Login
               {loginPopUp && <Login />}
             </button>
