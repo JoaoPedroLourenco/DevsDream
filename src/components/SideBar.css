@@ -13,6 +13,9 @@ nav{
     justify-content: space-between;
     margin-right: 20px;
     transition: .5s;
+    position: fixed;
+    left: 0;
+    top: 0;
 }
  
 nav ul{
@@ -114,8 +117,20 @@ nav ul li p{
     color: var(--brancoTransparenteTexto);
 }
  
-.perfil a{
-    padding-left: 10px;
+
+.perfil{
+    padding: 10px;
+
+}
+
+.perfil button{
+    background: #575757;
+    border: none;
+    text-align: left;
+    padding: 0px 10px;
+    color: white;
+    font-size: 1.2em;
+    border-radius: 10px;
 }
  
 .active{
