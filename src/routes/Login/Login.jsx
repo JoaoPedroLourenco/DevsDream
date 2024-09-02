@@ -31,7 +31,7 @@ const Login = () => {
   return (
     <div
       className={styles.loginContainer}
-      style={{ display: closePopUp ? "none" : "flex" }}
+      style={{ display: fecharPopUp ? "none" : "flex" }}
     >
       <form onSubmit={handleSubmit} onClick={evitarFechamento}>
         <div className={styles.logo}>
