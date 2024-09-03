@@ -28,6 +28,7 @@ const CreatePost = () => {
             <input
               type="text"
               name="postTitle"
+              autoComplete="off"
               value={postTitle}
               onChange={(e) => setPostTitle(e.target.value)}
             />

@@ -24,7 +24,7 @@ body{
   border-left: 1px solid var(--brancoTransparente);
   border-right: 1px solid var(--brancoTransparente);
   position: relative;
-  left: 20%;
+  left: 15%;
   top: 0%;
   overflow: hidden;
   z-index: 0;
@@ -37,4 +37,14 @@ body{
   font-size: 1.2em;
   padding: 10px 0px;
   border-bottom: 1px solid var(--brancoTransparente);
+  z-index: 2;
+}
+
+@media (max-width: 1400px){
+  .container{
+    width: 95%;
+    position: relative;
+    left: 0;
+    top: 0;
+  }
 }
