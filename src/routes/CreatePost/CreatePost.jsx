@@ -1,18 +1,18 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 import styles from "../CreatePost/CreatePost.module.css";
 
 const CreatePost = () => {
   const [postTitle, setPostTitle] = useState("");
   const [postContent, setPostContent] = useState("");
-  const [postTags, setPostTags] = useState([]);
+  const [postImage, setPostImage] = useState([]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     console.log(postTitle);
     console.log(postContent);
-    console.log(postTags);
+    console.log(postImage);
   };
 
   return (
@@ -39,17 +39,14 @@ const CreatePost = () => {
               name="postContent"
               value={postContent}
               onChange={(e) => setPostContent(e.target.value)}
+              maxLength="240"
             ></textarea>
           </label>
 
           <label>
-            Tags do post
-            <input
-              type="text"
-              name="postTags"
-              value={postTags}
-              onChange={(e) => setPostTags(e.target.value)}
-            />
+            Compartilhe uma imagem
+            {/* o .files cria um array e colocando o índice 0 informa que o valor que queremos é a primeira imagem */}
+            <input type="file" name="postImage" value={postImage} onChange={(e) => setPostImage(e.target.files[0])} />
           </label>
 
           <button>Criar Post</button>

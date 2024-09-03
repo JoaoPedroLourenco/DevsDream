@@ -15,16 +15,22 @@
 body{
   background: var(--bgColor);
   color: white;
+
 }
 
 .container{
   width: 60%;
+  height: 100vh;
   border-left: 1px solid var(--brancoTransparente);
   border-right: 1px solid var(--brancoTransparente);
   position: relative;
-  left: 5%;
-  top: 5%;
+  left: 20%;
+  top: 0%;
+  overflow: hidden;
+  z-index: 0;
 }
+
+
 
 .title{
   text-align: center;

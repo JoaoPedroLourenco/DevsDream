@@ -1,6 +1,23 @@
 .homeContainer{
-    width: 100%;
-    height: auto;
+    max-width: 100%;
+    height: 100%;
+}
+
+ 
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #4a4a4a;
+
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #ffffff;
+  border-radius: 10px;
 }
 
 .homeContainer .postsContainer{
@@ -9,8 +26,10 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 3em;
     padding: 20px 0px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.11);
+    overflow-y: scroll;
 }
 
 .userName{
@@ -35,6 +54,8 @@
     border-radius: 20px;
     padding: 20px;
     transition: .2s;
+    z-index: -1;
+    position: relative;
 }
 
 .postCard .postContent{
@@ -42,6 +63,11 @@
     display: flex;
     flex-direction: column;
     gap: 3em;
+}
+
+.postContent img{
+    border-radius: 10px;
+    box-shadow: 0px 2px 2px rgba(0,0,0,0.2);
 }
 
 .postContent p{
