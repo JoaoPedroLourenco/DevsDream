@@ -28,7 +28,7 @@ const SideBar = () => {
   // const [showResponsiveSideBar, setShowResponsiveSideBar] = useState(false);
 
   const openLoginPopUp = () => {
-    setLoginPopUp(!loginPopUp);
+    setLoginPopUp(true);
   };
 
   const diminuirSideBar = () => {

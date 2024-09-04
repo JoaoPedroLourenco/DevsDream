@@ -2,6 +2,8 @@ import { useState } from "react";
 
 import styles from "../CreatePost/CreatePost.module.css";
 
+import { Navigate } from "react-router-dom";
+
 const CreatePost = () => {
   const [postTitle, setPostTitle] = useState("");
   const [postContent, setPostContent] = useState("");
@@ -47,7 +49,12 @@ const CreatePost = () => {
           <label>
             Compartilhe uma imagem
             {/* o .files cria um array e colocando o índice 0 informa que o valor que queremos é a primeira imagem */}
-            <input type="file" name="postImage" value={postImage} onChange={(e) => setPostImage(e.target.files[0])} />
+            <input
+              type="file"
+              name="postImage"
+              value={postImage}
+              onChange={(e) => setPostImage(e.target.value)}
+            />
           </label>
 
           <button>Criar Post</button>

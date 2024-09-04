@@ -25,7 +25,7 @@ const Login = () => {
   // usado para o botão "cancelar" do form, para fechar o pop up
   // é possível fechar o pop up clicando fora do form
   const fecharPopUpLogin = () => {
-    setFecharPopUp(!fecharPopUp);
+    setFecharPopUp(true);
   };
 
   return (
@@ -42,6 +42,7 @@ const Login = () => {
           type="text"
           name="email"
           placeholder="Insira seu E-mail"
+          required
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
@@ -49,6 +50,7 @@ const Login = () => {
           type="password"
           name="senha"
           placeholder="Insira sua Senha"
+          required
           value={senha}
           onChange={(e) => setSenha(e.target.value)}
         />
