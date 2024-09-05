@@ -1,26 +1,44 @@
 import { useState } from "react";
+
 import gitHub from "../../assets/imgs/GitHub.png";
 import google from "../../assets/imgs/Google.png";
-import styles from "./Login.module.css";
+
+import styles from "./Cadastro.module.css";
 
 import { Link } from "react-router-dom";
 
-const Login = () => {
-  // consumir estado do email e senha
+const Cadastro = () => {
+  const [displayName, setDisplayName] = useState("");
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
+  const [confirmarSenha, setConfirmarSenha] = useState("");
+  const [error, setError] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    if (senha !== confirmarSenha) {
+      setError("As senhas precisam ser Iguais");
+    }
   };
 
   return (
     <>
       <div className="title">
-        <h1>Login</h1>
+        <h1>Cadastro</h1>
       </div>
-      <div className={styles.loginContainer}>
+      <div className={styles.cadastroContainer}>
         <form onSubmit={handleSubmit}>
+          {error && <div className={styles.error}>{error}</div>}
+
+          <input
+            type="text"
+            name="displayName"
+            placeholder="Insira o nome que deseja"
+            required
+            value={displayName}
+            onChange={(e) => setDisplayName(e.target.value)}
+          />
           <input
             type="text"
             name="email"
@@ -37,8 +55,16 @@ const Login = () => {
             value={senha}
             onChange={(e) => setSenha(e.target.value)}
           />
+          <input
+            type="password"
+            name="confirmarSenha"
+            placeholder="Confirme sua Senha"
+            required
+            value={confirmarSenha}
+            onChange={(e) => setConfirmarSenha(e.target.value)}
+          />
 
-          <div className={styles.btnLogin}>
+          <div className={styles.btnCadastro}>
             <button>Entrar</button>
           </div>
 
@@ -54,7 +80,7 @@ const Login = () => {
           </button>
 
           <p>
-            Não possui uma conta? <Link to="/cadastro">Cadastre-se</Link>
+            Já possui uma conta? <Link to="/login">Login</Link>
           </p>
         </form>
       </div>
@@ -62,4 +88,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Cadastro;

@@ -117,10 +117,9 @@ nav ul li p{
     color: var(--brancoTransparenteTexto);
 }
  
-
 .perfil{
-    padding: 10px;
-
+    display: flex;
+    flex-direction: column;
 }
 
 .perfil button{

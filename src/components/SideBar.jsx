@@ -18,18 +18,11 @@ import seta from "../assets/imgs/Left Arrow.png";
 import { NavLink } from "react-router-dom";
 
 // components / routes
-import Login from "../routes/Login/Login";
 
 const SideBar = () => {
   const [hideSideBar, setHideSideBar] = useState(false);
 
-  const [loginPopUp, setLoginPopUp] = useState(false);
-
   // const [showResponsiveSideBar, setShowResponsiveSideBar] = useState(false);
-
-  const openLoginPopUp = () => {
-    setLoginPopUp(true);
-  };
 
   const diminuirSideBar = () => {
     setHideSideBar(!hideSideBar);
@@ -41,12 +34,6 @@ const SideBar = () => {
 
   return (
     <>
-      {/* <button
-        className="btnSideBarResponsiva"
-        onClick={mostrarSideBarResponsiva}
-      >
-        <img src={menu} alt="" />
-      </button> */}
       <nav
         style={{
           width: hideSideBar ? "50px" : "300px",
@@ -95,10 +82,8 @@ const SideBar = () => {
         <div className="perfil">
           <ul>
             <li>
-              <button onClick={openLoginPopUp}>
-                Fazer Login
-                {loginPopUp && <Login />}
-              </button>
+              <NavLink to="/login">Fazer Login</NavLink>
+              <NavLink to="/cadastro">Cadastro</NavLink>
             </li>
           </ul>
         </div>
