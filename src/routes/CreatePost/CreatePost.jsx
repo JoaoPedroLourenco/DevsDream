@@ -1,20 +1,30 @@
 import { useState } from "react";
-
 import styles from "../CreatePost/CreatePost.module.css";
-
-import { Navigate } from "react-router-dom";
+import { useOutletContext } from "react-router-dom";
 
 const CreatePost = () => {
   const [postTitle, setPostTitle] = useState("");
   const [postContent, setPostContent] = useState("");
-  const [postImage, setPostImage] = useState([]);
+  const [file, setFile] = useState(null);
+
+  const { adicionarPost } = useOutletContext(); // Recupera a função adicionarPost
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    console.log(postTitle);
-    console.log(postContent);
-    console.log(postImage);
+    const novoPost = {
+      postTitle,
+      postContent,
+      postImage: file, // URL da imagem gerada para preview
+    };
+
+    // Chama a função adicionarPost
+    adicionarPost(novoPost);
+  };
+
+  const previewImagem = (e) => {
+    const arquivoSelecionado = e.target.files[0];
+    setFile(URL.createObjectURL(arquivoSelecionado)); // Preview da imagem
   };
 
   return (
@@ -33,6 +43,7 @@ const CreatePost = () => {
               autoComplete="off"
               value={postTitle}
               onChange={(e) => setPostTitle(e.target.value)}
+              required
             />
           </label>
 
@@ -43,21 +54,25 @@ const CreatePost = () => {
               value={postContent}
               onChange={(e) => setPostContent(e.target.value)}
               maxLength="240"
+              required
             ></textarea>
           </label>
 
-          <label>
-            Compartilhe uma imagem
-            {/* o .files cria um array e colocando o índice 0 informa que o valor que queremos é a primeira imagem */}
-            <input
-              type="file"
-              name="postImage"
-              value={postImage}
-              onChange={(e) => setPostImage(e.target.value)}
-            />
-          </label>
+          <div className={styles.imageUpload}>
+            <label>
+              Compartilhe uma imagem
+              <input type="file" name="postImage" onChange={previewImagem} />
+            </label>
 
-          <button>Criar Post</button>
+            {file && (
+              <label>
+                Preview da imagem
+                <img src={file} alt="Preview da imagem do post" />
+              </label>
+            )}
+          </div>
+
+          <button type="submit">Criar Post</button>
         </form>
       </div>
     </div>
