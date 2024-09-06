@@ -13,11 +13,13 @@ import { AuthProvider } from "./context/authContext.jsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Perfil from "./routes/Perfil/Perfil.jsx";
 import Cadastro from "./routes/Cadastro/Cadastro.jsx";
+import ErrorPage from "./routes/ErrorPage/ErrorPage.jsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
+    errorElement: <ErrorPage/>,
     children: [
       {
         path: "/",

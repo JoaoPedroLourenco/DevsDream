@@ -1,18 +1,38 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import gitHub from "../../assets/imgs/GitHub.png";
 import google from "../../assets/imgs/Google.png";
 import styles from "./Login.module.css";
 
 import { Link } from "react-router-dom";
 
+import { useAuthentication } from "../../hooks/useAuthentication";
+
 const Login = () => {
   // consumir estado do email e senha
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
+  const [error, setError] = useState("")
 
-  const handleSubmit = (e) => {
+  const {login, entrarComGoogle, error: erroAutenticacao, loading} = useAuthentication()
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
+
+    const usuario = {
+      email,
+      senha
+    }
+
+    const response = await login(usuario)
+
+    console.log(response)
   };
+
+  useEffect(() => {
+    if (erroAutenticacao) {
+      setError(erroAutenticacao);
+    }
+  }, [erroAutenticacao]);
 
   return (
     <>
@@ -20,6 +40,7 @@ const Login = () => {
         <h1>Login</h1>
       </div>
       <div className={styles.loginContainer}>
+      {error && <div className={styles.error}>{error}</div>}
         <form onSubmit={handleSubmit}>
           <input
             type="text"
@@ -44,13 +65,9 @@ const Login = () => {
 
           <p>OU</p>
 
-          <button className={styles.btnAltConnect}>
+          <button className={styles.btnAltConnect} onClick={entrarComGoogle}>
             <img src={google} alt="google" />
             Conectar com Google
-          </button>
-          <button className={styles.btnAltConnect}>
-            <img src={gitHub} alt="gitHub" />
-            Conectar com GitHub
           </button>
 
           <p>

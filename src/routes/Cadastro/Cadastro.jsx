@@ -19,6 +19,7 @@ const Cadastro = () => {
     criarUsuario,
     error: erroAutenticacao,
     loading,
+    entrarComGoogle
   } = useAuthentication();
 
   const handleSubmit = async (e) => {
@@ -61,7 +62,7 @@ const Cadastro = () => {
             type="text"
             name="displayName"
             placeholder="Insira o nome que deseja"
-            required
+           
             value={displayName}
             onChange={(e) => setDisplayName(e.target.value)}
           />
@@ -69,7 +70,7 @@ const Cadastro = () => {
             type="text"
             name="email"
             placeholder="Insira seu E-mail"
-            required
+        
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
@@ -77,7 +78,7 @@ const Cadastro = () => {
             type="password"
             name="senha"
             placeholder="Insira sua Senha"
-            required
+            
             value={senha}
             onChange={(e) => setSenha(e.target.value)}
           />
@@ -85,14 +86,14 @@ const Cadastro = () => {
             type="password"
             name="confirmarSenha"
             placeholder="Confirme sua Senha"
-            required
+           
             value={confirmarSenha}
             onChange={(e) => setConfirmarSenha(e.target.value)}
           />
 
           {!loading && (
             <div className={styles.btnCadastro}>
-              <button>Entrar</button>
+              <button>Cadastrar</button>
             </div>
           )}
 
@@ -104,19 +105,19 @@ const Cadastro = () => {
 
           <p>OU</p>
 
-          <button className={styles.btnAltConnect}>
+          
+
+         
+        </form>
+          
+        <button className={styles.btnAltConnect} onClick={entrarComGoogle}>
             <img src={google} alt="google" />
             Conectar com Google
-          </button>
-          <button className={styles.btnAltConnect}>
-            <img src={gitHub} alt="gitHub" />
-            Conectar com GitHub
           </button>
 
           <p>
             Já possui uma conta? <Link to="/login">Login</Link>
           </p>
-        </form>
       </div>
     </>
   );

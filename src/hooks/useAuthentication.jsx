@@ -1,10 +1,12 @@
-import { db } from "../firebase/config";
+import { db} from "../firebase/config";
 
 import {
   getAuth,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   updateProfile,
+  signInWithPopup,
+  GoogleAuthProvider,
   signOut,
 } from "firebase/auth";
 
@@ -14,10 +16,13 @@ export const useAuthentication = () => {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(null);
 
+  const auth = getAuth()
+
+  const provider = new GoogleAuthProvider()
+
   // lidando com vazamento de memória
   const [cancelado, setCancelado] = useState(false);
 
-  const auth = getAuth();
 
   // usado para não deixar "resquícios" de funções usadas
   function checarSeFoiCancelado() {
@@ -26,6 +31,27 @@ export const useAuthentication = () => {
     }
   }
 
+
+  // entrar usando o google
+  const entrarComGoogle = async () => {
+    checarSeFoiCancelado()
+    setLoading(true)
+    setError(null)
+
+    try {
+      await signInWithPopup(auth, provider)
+    } catch (error) {
+      console.log(error.message)
+      console.log(typeof error.message)
+    }
+
+    setError(error)
+    setLoading(false)
+  }
+
+
+
+  // cadastro de usuário
   const criarUsuario = async (data) => {
     checarSeFoiCancelado();
     setLoading(true);
@@ -64,6 +90,36 @@ export const useAuthentication = () => {
     }
   };
 
+  const login = async (data) => {
+    checarSeFoiCancelado()
+    setError(null)
+    setLoading(true)
+
+    try {
+      await signInWithEmailAndPassword(auth, data.email, data.senha)
+
+      setLoading(false);
+    } catch (error) {
+      console.log(error.message)
+      console.log(typeof error.message)
+    }
+  }
+
+
+  const sairDaConta = async () => {
+    checarSeFoiCancelado()
+    setError(null)
+    setLoading(true)
+
+    try {
+      await signOut(auth)
+    } catch (error) {
+      console.log(error.message)
+      console.log(typeof error.message)
+    }
+  }
+
+
   useEffect(() => {
     return () => setCancelado(true);
   }, []);
@@ -73,5 +129,8 @@ export const useAuthentication = () => {
     criarUsuario,
     error,
     loading,
+    entrarComGoogle,
+    login,
+    sairDaConta
   };
 };
