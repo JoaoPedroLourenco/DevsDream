@@ -13,9 +13,6 @@ nav{
     justify-content: space-between;
     margin-right: 20px;
     transition: .5s;
-    /* position: fixed;
-    left: 0;
-    top: 0; */
 }
  
 nav ul{
@@ -26,6 +23,8 @@ nav ul{
 }
  
 nav ul .logo{
+    width: 100%;
+    height: 50px;
     padding: 5px;
     display: flex;
     align-items: center;
@@ -36,18 +35,23 @@ nav ul .logo{
     border-bottom: 1px solid var(--brancoTransparente);
     margin-bottom: 5px;
 }
+
+
  
  
-.logoContent{
+.logo .logoContent{
+    width: 90%;
+    height: 100%;
     display: flex;
     align-items: center;
     gap: .5em;
 }
+
  
-.seta{
+.logo .seta{
+    width: 10%;
     display: flex;
     align-items: center;
-    justify-content: center;
     margin-right: 10px;
     text-align: center;
     z-index: 999;
@@ -81,7 +85,7 @@ nav ul .logo{
 }
  
 .logo img{
-    width: 100%;
+    width: 40px;
     height: 40px;
 }
  

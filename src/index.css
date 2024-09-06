@@ -30,6 +30,8 @@ body{
   border-right: 1px solid var(--brancoTransparente);
   overflow: hidden;
   z-index: 0;
+  position: absolute;
+  left: 20%;
 }
 
 .title{
@@ -43,5 +45,7 @@ body{
 @media (max-width: 1400px){
   .container{
     width: 100%;
+    position: relative;
+    left: 0%;
   }
 }

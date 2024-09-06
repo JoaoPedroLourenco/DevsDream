@@ -8,6 +8,8 @@ import Sobre from "./routes/Sobre/Sobre.jsx";
 import CreatePost from "./routes/CreatePost/CreatePost.jsx";
 import Login from "./routes/Login/Login.jsx";
 
+import { AuthProvider } from "./context/authContext.jsx";
+
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Perfil from "./routes/Perfil/Perfil.jsx";
 import Cadastro from "./routes/Cadastro/Cadastro.jsx";
@@ -47,6 +49,8 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
   </StrictMode>
 );

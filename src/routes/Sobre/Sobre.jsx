@@ -14,7 +14,7 @@ const Ajuda = () => {
 
       <div className={styles.sobreContainer}>
         <h1>
-          Sobre a <span>DevsDream</span>
+          Sobre a <span>UniNetwork</span>
         </h1>
 
         <div className={styles.creditos}>
@@ -30,9 +30,12 @@ const Ajuda = () => {
         </div>
 
         <p>
-          O DevsDream é um fórum focado principalmente na área da tecnologia,
-          buscando trazer esclarecimentos, feedbacks ou ideias aos projetos e/ou
-          problemas dos alunos da área de tecnologia da Unimar.
+          A UniNetwork é uma rede social voltada para estudantes universitários,
+          com o objetivo de promover a interação entre eles. Na plataforma, os
+          usuários podem compartilhar textos e fotos relacionados à vida
+          acadêmica, facilitando a troca de experiências, ideias e dicas. A
+          UniNetwork cria um ambiente virtual que aproxima alunos de diferentes
+          cursos e instituições, fortalecendo a comunidade universitária.
         </p>
 
         <h2>Projeto realizado para o bootcamp Jovem Programador 2024</h2>

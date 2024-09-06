@@ -8,7 +8,7 @@ function App() {
   const navigate = useNavigate();
 
   const adicionarPost = (novoPost) => {
-    setPosts((prevPosts) => [...prevPosts, novoPost]);
+    setPosts((prevPosts) => [novoPost, ...prevPosts]);
     navigate("/"); // Navegar para a Home após adicionar o post
   };
 

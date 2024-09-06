@@ -10,8 +10,10 @@ import create from "../assets/imgs/Add.png";
 // import sair from "../assets/imgs/sair.png";
 // import user from "../assets/imgs/user.png";
 import ajuda from "../assets/imgs/ajuda.png";
-import Logo from "../assets/imgs/unimar.png";
+import Logo from "../assets/imgs/Logo.png";
 import seta from "../assets/imgs/Left Arrow.png";
+import login from "../assets/imgs/Enter.png";
+import newUser from "../assets/imgs/cadastro.png";
 // import menu from "../assets/imgs/menu.png";
 
 // react-router-dom
@@ -43,7 +45,9 @@ const SideBar = () => {
           <div className="logo">
             <div className="logoContent">
               <img src={Logo} alt="" />
-              <p style={{ display: hideSideBar ? "none" : "block" }}></p>
+              <p style={{ display: hideSideBar ? "none" : "block" }}>
+                UniNetwork
+              </p>
             </div>
             <div className="seta">
               <button
@@ -82,8 +86,16 @@ const SideBar = () => {
         <div className="perfil">
           <ul>
             <li>
-              <NavLink to="/login">Fazer Login</NavLink>
-              <NavLink to="/cadastro">Cadastro</NavLink>
+              <NavLink to="/login">
+                <img src={login} alt="login" />
+                <p style={{ display: hideSideBar ? "none" : "block" }}>Login</p>
+              </NavLink>
+              <NavLink to="/cadastro">
+                <img src={newUser} alt="cadastrar-se" />
+                <p style={{ display: hideSideBar ? "none" : "block" }}>
+                  Cadastre-se
+                </p>
+              </NavLink>
             </li>
           </ul>
         </div>

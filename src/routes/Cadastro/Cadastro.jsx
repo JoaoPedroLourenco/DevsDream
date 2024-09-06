@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import gitHub from "../../assets/imgs/GitHub.png";
 import google from "../../assets/imgs/Google.png";
@@ -6,6 +6,7 @@ import google from "../../assets/imgs/Google.png";
 import styles from "./Cadastro.module.css";
 
 import { Link } from "react-router-dom";
+import { useAuthentication } from "../../hooks/useAuthentication";
 
 const Cadastro = () => {
   const [displayName, setDisplayName] = useState("");
@@ -14,13 +15,38 @@ const Cadastro = () => {
   const [confirmarSenha, setConfirmarSenha] = useState("");
   const [error, setError] = useState("");
 
-  const handleSubmit = (e) => {
+  const {
+    criarUsuario,
+    error: erroAutenticacao,
+    loading,
+  } = useAuthentication();
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
+    setError("");
+
+    const usuario = {
+      displayName,
+      email,
+      senha,
+    };
+
     if (senha !== confirmarSenha) {
-      setError("As senhas precisam ser Iguais");
+      setError("As senhas precisam ser iguais");
+      return;
     }
+
+    const response = await criarUsuario(usuario);
+
+    console.log(response);
   };
+
+  useEffect(() => {
+    if (erroAutenticacao) {
+      setError(erroAutenticacao);
+    }
+  }, [erroAutenticacao]);
 
   return (
     <>
@@ -64,9 +90,17 @@ const Cadastro = () => {
             onChange={(e) => setConfirmarSenha(e.target.value)}
           />
 
-          <div className={styles.btnCadastro}>
-            <button>Entrar</button>
-          </div>
+          {!loading && (
+            <div className={styles.btnCadastro}>
+              <button>Entrar</button>
+            </div>
+          )}
+
+          {loading && (
+            <div className={styles.btnCadastro}>
+              <button disabled>Aguarde</button>
+            </div>
+          )}
 
           <p>OU</p>
 

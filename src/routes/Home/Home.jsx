@@ -19,7 +19,7 @@ const Home = () => {
               <div className={styles.postText}>
                 <div className={styles.userName}>
                   <img src={user} alt="User avatar" />
-                  <p>João Pedro L.</p>
+                  <span>João Pedro L.</span>
                 </div>
                 <h2>{post.postTitle}</h2>
                 <p>{post.postContent}</p>
