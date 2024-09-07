@@ -10,6 +10,8 @@ Clone o repositório ou baixe o arquivo zip
 
 `git clone https://github.com/JoaoPedroLourenco/UniNetwork/`
 
+Entre na pasta do projeto
+
 `cd UniNetwork`
 
 Quando estiver na pasta do projeto, instale as dependências utilizando
