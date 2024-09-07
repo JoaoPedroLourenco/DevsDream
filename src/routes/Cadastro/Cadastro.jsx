@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 
-import gitHub from "../../assets/imgs/GitHub.png";
 import google from "../../assets/imgs/Google.png";
 
 import styles from "./Cadastro.module.css";
@@ -19,7 +18,7 @@ const Cadastro = () => {
     criarUsuario,
     error: erroAutenticacao,
     loading,
-    entrarComGoogle
+    entrarComGoogle,
   } = useAuthentication();
 
   const handleSubmit = async (e) => {
@@ -56,13 +55,12 @@ const Cadastro = () => {
       </div>
       <div className={styles.cadastroContainer}>
         <form onSubmit={handleSubmit}>
-          {error && <div className={styles.error}>{error}</div>}
+          {error && <div className="error">{error}</div>}
 
           <input
             type="text"
             name="displayName"
             placeholder="Insira o nome que deseja"
-           
             value={displayName}
             onChange={(e) => setDisplayName(e.target.value)}
           />
@@ -70,7 +68,6 @@ const Cadastro = () => {
             type="text"
             name="email"
             placeholder="Insira seu E-mail"
-        
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
@@ -78,7 +75,6 @@ const Cadastro = () => {
             type="password"
             name="senha"
             placeholder="Insira sua Senha"
-            
             value={senha}
             onChange={(e) => setSenha(e.target.value)}
           />
@@ -86,7 +82,6 @@ const Cadastro = () => {
             type="password"
             name="confirmarSenha"
             placeholder="Confirme sua Senha"
-           
             value={confirmarSenha}
             onChange={(e) => setConfirmarSenha(e.target.value)}
           />
@@ -104,20 +99,16 @@ const Cadastro = () => {
           )}
 
           <p>OU</p>
-
-          
-
-         
         </form>
-          
-        <button className={styles.btnAltConnect} onClick={entrarComGoogle}>
-            <img src={google} alt="google" />
-            Conectar com Google
-          </button>
 
-          <p>
-            Já possui uma conta? <Link to="/login">Login</Link>
-          </p>
+        <button className={styles.btnAltConnect} onClick={entrarComGoogle}>
+          <img src={google} alt="google" />
+          Conectar com Google
+        </button>
+
+        <p>
+          Já possui uma conta? <Link to="/login">Login</Link>
+        </p>
       </div>
     </>
   );

@@ -8,7 +8,7 @@ import "./SideBar.css";
 import home from "../assets/imgs/home.png";
 import create from "../assets/imgs/Add.png";
 // import sair from "../assets/imgs/sair.png";
-// import user from "../assets/imgs/user.png";
+import userImage from "../assets/imgs/user.png";
 import ajuda from "../assets/imgs/ajuda.png";
 import Logo from "../assets/imgs/Logo.png";
 import seta from "../assets/imgs/Left Arrow.png";
@@ -19,20 +19,18 @@ import newUser from "../assets/imgs/cadastro.png";
 // react-router-dom
 import { NavLink } from "react-router-dom";
 
-// components / routes
+import { useAuthentication } from "../hooks/useAuthentication";
+
+import { useAuthValue } from "../context/AuthContext";
 
 const SideBar = () => {
-  const [hideSideBar, setHideSideBar] = useState(false);
+  const { user } = useAuthValue();
 
-  // const [showResponsiveSideBar, setShowResponsiveSideBar] = useState(false);
+  const [hideSideBar, setHideSideBar] = useState(false);
 
   const diminuirSideBar = () => {
     setHideSideBar(!hideSideBar);
   };
-
-  // const mostrarSideBarResponsiva = () => {
-  //   setShowResponsiveSideBar(!showResponsiveSideBar);
-  // };
 
   return (
     <>
@@ -82,22 +80,39 @@ const SideBar = () => {
             </NavLink>
           </li>
         </ul>
-
         <div className="perfil">
-          <ul>
-            <li>
-              <NavLink to="/login">
-                <img src={login} alt="login" />
-                <p style={{ display: hideSideBar ? "none" : "block" }}>Login</p>
-              </NavLink>
-              <NavLink to="/cadastro">
-                <img src={newUser} alt="cadastrar-se" />
-                <p style={{ display: hideSideBar ? "none" : "block" }}>
-                  Cadastre-se
-                </p>
-              </NavLink>
-            </li>
-          </ul>
+          {user && (
+            <ul>
+              <li>
+                <NavLink to="/perfil">
+                  <img src={userImage} alt="login" />
+                  <p style={{ display: hideSideBar ? "none" : "block" }}>
+                    Perfil
+                  </p>
+                </NavLink>
+              </li>
+            </ul>
+          )}
+          {!user && (
+            <ul>
+              <li>
+                <NavLink to="/login">
+                  <img src={login} alt="login" />
+                  <p style={{ display: hideSideBar ? "none" : "block" }}>
+                    Login
+                  </p>
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/cadastro">
+                  <img src={newUser} alt="cadastrar-se" />
+                  <p style={{ display: hideSideBar ? "none" : "block" }}>
+                    Cadastre-se
+                  </p>
+                </NavLink>
+              </li>
+            </ul>
+          )}
         </div>
       </nav>
     </>

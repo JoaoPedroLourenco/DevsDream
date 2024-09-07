@@ -1,4 +1,4 @@
-import { db} from "../firebase/config";
+import { db } from "../firebase/config";
 
 import {
   getAuth,
@@ -16,13 +16,12 @@ export const useAuthentication = () => {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(null);
 
-  const auth = getAuth()
+  const auth = getAuth();
 
-  const provider = new GoogleAuthProvider()
+  const provider = new GoogleAuthProvider();
 
   // lidando com vazamento de memória
   const [cancelado, setCancelado] = useState(false);
-
 
   // usado para não deixar "resquícios" de funções usadas
   function checarSeFoiCancelado() {
@@ -31,34 +30,31 @@ export const useAuthentication = () => {
     }
   }
 
-
   // entrar usando o google
   const entrarComGoogle = async () => {
-    checarSeFoiCancelado()
-    setLoading(true)
-    setError(null)
+    checarSeFoiCancelado();
+    setLoading(true);
+    setError(null);
 
     try {
-      await signInWithPopup(auth, provider)
+      await signInWithPopup(auth, provider);
     } catch (error) {
-      console.log(error.message)
-      console.log(typeof error.message)
+      console.log(error.message);
+      console.log(typeof error.message);
     }
 
-    setError(error)
-    setLoading(false)
-  }
+    setError(error);
+    setLoading(false);
+  };
 
-
-
-  // cadastro de usuário
+  // função de cadastro de usuário
   const criarUsuario = async (data) => {
     checarSeFoiCancelado();
     setLoading(true);
     setError(null);
 
     try {
-      const { usuario } = await createUserWithEmailAndPassword(
+      const userCredential = await createUserWithEmailAndPassword(
         auth,
         data.email,
         data.senha
@@ -66,11 +62,13 @@ export const useAuthentication = () => {
 
       // é preciso atualizar o perfil adicionando o nome de display
       // o firebase permite que crie contas com email e senha apenas
+      const usuario = userCredential.user;
+
       await updateProfile(usuario, {
         displayName: data.displayName,
       });
 
-      setLoading(false);
+      return usuario;
     } catch (error) {
       console.log(error.message);
       console.log(typeof error.message);
@@ -90,35 +88,29 @@ export const useAuthentication = () => {
     }
   };
 
+  // função de login
   const login = async (data) => {
-    checarSeFoiCancelado()
-    setError(null)
-    setLoading(true)
+    checarSeFoiCancelado();
+    setError(null);
+    setLoading(true);
 
     try {
-      await signInWithEmailAndPassword(auth, data.email, data.senha)
-
+      await signInWithEmailAndPassword(auth, data.email, data.senha);
       setLoading(false);
     } catch (error) {
-      console.log(error.message)
-      console.log(typeof error.message)
+      let mensagemErroDoSistema = "Email ou Senha incorretos";
+
+      setError(mensagemErroDoSistema);
+      setLoading(false);
     }
-  }
+  };
 
+  // função de logOut / sair da conta
+  const sairDaConta = () => {
+    checarSeFoiCancelado();
 
-  const sairDaConta = async () => {
-    checarSeFoiCancelado()
-    setError(null)
-    setLoading(true)
-
-    try {
-      await signOut(auth)
-    } catch (error) {
-      console.log(error.message)
-      console.log(typeof error.message)
-    }
-  }
-
+    signOut(auth);
+  };
 
   useEffect(() => {
     return () => setCancelado(true);
@@ -131,6 +123,6 @@ export const useAuthentication = () => {
     loading,
     entrarComGoogle,
     login,
-    sairDaConta
+    sairDaConta,
   };
 };

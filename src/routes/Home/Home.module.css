@@ -43,7 +43,7 @@
 .userName{
     display: flex;
     align-items: center;
-    gap: 1em;
+    gap: .5em;
 }
 
 .userName img{
@@ -70,11 +70,33 @@
     height: 100%;
     display: flex;
     flex-direction: column;
-    gap: 3em;
+    gap: 1em;
 }
 
-.postText > img{
-    min-width: 100%;
+.homeContainer .formSearch{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+}
+
+
+.formSearch input{
+    width: 50%;
+}
+
+.formSearch button{
+    width: 30%;
+}
+
+.postContent .imageContainer{
+    width: 100%;
+    height: auto;
+}
+
+.imageContainer img{
+    width: 100%;
     max-height: 500px;
     object-fit: contain;
     border-radius: 10px;

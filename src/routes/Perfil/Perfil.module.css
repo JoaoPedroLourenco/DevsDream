@@ -1,0 +1,98 @@
+.perfilContainer{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 100px;
+    position: relative;
+}
+
+.logOut{
+    width: 100%;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logOut button{
+    width: 300px;
+    height: 50px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.info{
+    width: 100%;
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 1em;
+}
+
+.info p{
+    width: 50%;
+    height: 50px;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    padding: 0px 30px;
+    font-size: 1.2em;
+    background: rgba(0, 0, 0, 0.205);
+    border-radius: 50px;
+}
+
+.popUpLogOut{
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.592);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.popUpLogOut .popUpCard{
+    width: 500px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2em;
+    background: rgb(66, 66, 66);
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0px 4px 4px rgba(0,0,0,0.3);
+}
+
+.popUpCard p{
+    font-size: 1.5em;
+}
+
+.popUpCard .btnsPopUp{  
+    width: 100%;
+    display: flex;
+    height: auto;
+    gap: 1em;
+}
+
+.btnsPopUp button{
+    width: 50%;
+    height: 40px;
+    border-radius: 10px;
+    font-size: 1.2em;
+    border: none;
+    cursor: pointer;
+}
+
+.cancelar{
+    background: #3b10f9;
+    color: white;
+}

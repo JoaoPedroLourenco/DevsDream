@@ -11,21 +11,26 @@ const Login = () => {
   // consumir estado do email e senha
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
-  const [error, setError] = useState("")
+  const [error, setError] = useState("");
 
-  const {login, entrarComGoogle, error: erroAutenticacao, loading} = useAuthentication()
+  const {
+    login,
+    entrarComGoogle,
+    error: erroAutenticacao,
+    loading,
+  } = useAuthentication();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     const usuario = {
       email,
-      senha
-    }
+      senha,
+    };
 
-    const response = await login(usuario)
+    const response = await login(usuario);
 
-    console.log(response)
+    console.log(response);
   };
 
   useEffect(() => {
@@ -40,7 +45,7 @@ const Login = () => {
         <h1>Login</h1>
       </div>
       <div className={styles.loginContainer}>
-      {error && <div className={styles.error}>{error}</div>}
+        {error && <div className="error">{error}</div>}
         <form onSubmit={handleSubmit}>
           <input
             type="text"

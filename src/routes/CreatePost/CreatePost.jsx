@@ -1,31 +1,44 @@
 import { useState } from "react";
 import styles from "../CreatePost/CreatePost.module.css";
-import { useOutletContext } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { useInsertDocument } from "../../hooks/useInsertDocument";
+import { useAuthValue } from "../../context/AuthContext";
 
 const CreatePost = () => {
   const [postTitle, setPostTitle] = useState("");
   const [postContent, setPostContent] = useState("");
   const [file, setFile] = useState(null);
+  const [formError, setFormError] = useState("");
 
-  const { adicionarPost } = useOutletContext(); // Recupera a função adicionarPost
+  const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const { user } = useAuthValue();
+
+  const { inserirDocumento, response } = useInsertDocument("posts");
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const novoPost = {
-      postTitle,
-      postContent,
-      postImage: file, // URL da imagem gerada para preview
-    };
+    setFormError("");
 
-    // Chama a função adicionarPost
-    adicionarPost(novoPost);
+    // Insere o documento com a imagem
+    await inserirDocumento(
+      {
+        postTitle,
+        postContent,
+        uid: user.uid,
+        createdBy: user.displayName,
+      },
+      file // Passa o arquivo de imagem para ser carregado no Storage
+    );
+
+    navigate("/"); // Voltar para a página principal após o envio
   };
 
-  const previewImagem = (e) => {
+  function previewImagem(e) {
     const arquivoSelecionado = e.target.files[0];
-    setFile(URL.createObjectURL(arquivoSelecionado)); // Preview da imagem
-  };
+    setFile(arquivoSelecionado); // Armazena o arquivo de imagem
+  }
 
   return (
     <div className={styles.criarPost}>
@@ -67,12 +80,17 @@ const CreatePost = () => {
             {file && (
               <label>
                 Preview da imagem
-                <img src={file} alt="Preview da imagem do post" />
+                <img
+                  src={URL.createObjectURL(file)}
+                  alt="Preview da imagem do post"
+                />
               </label>
             )}
           </div>
 
-          <button type="submit">Criar Post</button>
+          {!response.loading && <button>Postar</button>}
+
+          {response.loading && <button disabled>Aguarde</button>}
         </form>
       </div>
     </div>
