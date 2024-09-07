@@ -8,7 +8,11 @@ Para a visualização do projeto
 
 Clone o repositório ou baixe o arquivo zip
 
-`git clone https://github.com/JoaoPedroLourenco/UniNetwork/`
+<clipboard-copy for="blob-path" class="btn btn-sm BtnGroup-item">
+  git clone https://github.com/JoaoPedroLourenco/UniNetwork/
+</clipboard-copy>
+<div id="blob-path">src/index.js</div>
+
 
 `cd UniNetwork`
 
