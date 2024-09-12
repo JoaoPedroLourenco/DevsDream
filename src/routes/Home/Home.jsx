@@ -1,9 +1,50 @@
 import styles from "./Home.module.css";
 import user from "../../assets/imgs/ByeWind.png";
 import { useFetchDocuments } from "../../hooks/useFetchDocuments";
+import { useState } from "react";
+
+import like from "../../assets/imgs/like.png";
 
 const Home = () => {
   const { documents: posts, loading } = useFetchDocuments("posts");
+
+  const [likeContador, setLikeContador] = useState(0);
+  const [dislikeContador, setDislikeContador] = useState(0);
+  const [btnAtivo, setBtnAtivo] = useState("none");
+
+  const handleLike = (reacao) => {
+    if (btnAtivo === "none") {
+      if (reacao === "like") {
+        setLikeContador(likeContador + 1);
+        setBtnAtivo("like");
+      } else if (reacao === "dislike") {
+        setDislikeContador(dislikeContador + 1);
+        setBtnAtivo("dislike");
+      }
+    }
+    //dsaudhjsad
+    //diosajdsoiad
+    else if (btnAtivo === reacao) {
+      if (reacao === "like") {
+        setLikeContador(likeContador - 1);
+      } else if (reacao === "dislike") {
+        setDislikeContador(dislikeContador - 1);
+      }
+      setBtnAtivo("none");
+    }
+    // dsadsad
+    else if (btnAtivo !== reacao) {
+      if (reacao === "like") {
+        setLikeContador(likeContador + 1);
+        setDislikeContador(dislikeContador - 1);
+        setBtnAtivo("like");
+      } else if (reacao === "dislike") {
+        setLikeContador(likeContador - 1);
+        setDislikeContador(dislikeContador + 1);
+        setBtnAtivo("dislike");
+      }
+    }
+  };
 
   return (
     <div className={styles.homeContainer}>
@@ -41,6 +82,31 @@ const Home = () => {
                     />
                   </div>
                 )}
+
+                <div className={styles.feedBackBtns}>
+                  <div className={styles.likeBtn}>
+                    <button
+                      onClick={() => handleLike("like")}
+                      className={`btn ${
+                        btnAtivo === "like" ? `${styles.likeAtivo}` : ""
+                      }`}
+                    >
+                      <img src={like} alt="" />
+                      <span>{likeContador}</span>
+                    </button>
+                  </div>
+                  <div className={styles.dislikeBtn}>
+                    <button
+                      onClick={() => handleLike("dislike")}
+                      className={`btn ${
+                        btnAtivo === "dislike" ? `${styles.dislikeAtivo}` : ""
+                      }`}
+                    >
+                      <img src={like} />
+                      <span>{dislikeContador}</span>
+                    </button>
+                  </div>
+                </div>
               </div>
             </div>
           ))}
